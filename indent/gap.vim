@@ -11,8 +11,9 @@
 
 " Only load this indent file when no other was loaded.
 if exists("b:did_indent")
-finish
+  finish
 endif
+
 let b:did_indent = 1
 
 " Some preliminary setting
@@ -25,7 +26,7 @@ let GAPIndentShift = 2
 
 " Only define the function once.
 if exists("*GetGAPIndent")
-finish
+  finish
 endif
 
 " this function computes for line lnum of the current buffer the number of

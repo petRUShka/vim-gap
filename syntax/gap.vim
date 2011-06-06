@@ -7,8 +7,6 @@
 " 
 " Comments: If you want to use this file, you may want to adjust colors to
 " your taste. There are some functions/macros for 
-" GAPnl                -- newline, with reindenting the old line
-"                         (mapped on <CTRL>-j)
 " ToggleCommentGAP     -- toggle comment, add or remove "##  " 
 "                         (mapped on F12)
 " <F4>                 -- macro to add word under cursor to `local' list
@@ -78,25 +76,45 @@ syn match  gapSublist	"[}{]"
 "hilite
 " this is very much dependent on personal taste, must add gui case if you
 " use gvim
-hi gapString ctermfg=2
-hi gapFunction  ctermfg=1
-hi gapDeclare  cterm=bold ctermfg=4
-hi gapMethsel  ctermfg=6
-hi gapOtherKey  ctermfg=3
-hi gapOperator cterm=bold ctermfg=8
-hi gapConditional cterm=bold ctermfg=9
-hi gapRepeat cterm=bold ctermfg=12
-hi gapComment  ctermfg=4
-hi gapTodo  ctermbg=2 ctermfg=0
-hi link gapTTodoComment  gapTodo
-hi link gapTodoComment	gapComment
-hi gapNumber ctermfg=5
-hi gapBool ctermfg=5
-hi gapChar ctermfg=3
-hi gapListDelimiter ctermfg=8
-hi gapParentheses ctermfg=12
-hi gapSublist ctermfg=14
-hi gapFunLine ctermbg=3 ctermfg=0
+""hi gapString ctermfg=2
+""hi gapFunction  ctermfg=1
+""hi gapDeclare  cterm=bold ctermfg=4
+""hi gapMethsel  ctermfg=6
+""hi gapOtherKey  ctermfg=3
+""hi gapOperator cterm=bold ctermfg=8
+""hi gapConditional cterm=bold ctermfg=9
+""hi gapRepeat cterm=bold ctermfg=12
+""hi gapComment  ctermfg=4
+""hi gapTodo  ctermbg=2 ctermfg=0
+""hi link gapTTodoComment  gapTodo
+""hi link gapTodoComment	gapComment
+""hi gapNumber ctermfg=5
+""hi gapBool ctermfg=5
+""hi gapChar ctermfg=3
+""hi gapListDelimiter ctermfg=8
+""hi gapParentheses ctermfg=12
+""hi gapSublist ctermfg=14
+""hi gapFunLine ctermbg=3 ctermfg=0
+
+hi def link gapString         String
+hi def link gapFunction       Function 
+hi def link gapDeclare        Special
+hi def link gapMethsel        Special
+hi def link gapOtherKey       Special
+hi def link gapOperator       Operator
+hi def link gapConditional    Conditional 
+hi def link gapRepeat         Repeat    
+hi def link gapComment        Comment
+hi def link gapTodo           Todo
+hi def link gapTTodoComment   gapTodo
+hi def link gapTodoComment	  gapComment
+hi def link gapNumber         Number
+hi def link gapBool           Boolean
+hi def link gapChar           Character
+hi def link gapListDelimiter  Delimiter
+hi def link gapParentheses    Special
+hi def link gapSublist        Special 
+hi def link gapFunLine        Function
 
 syn sync maxlines=500
 
@@ -167,52 +185,6 @@ endfunc
 " I put it on F12, adjust as you like
 map <F12> :call ToggleCommentGAP()<CR>j
 map! <F12> <ESC>:call ToggleCommentGAP()<CR>ji
-
-
-" function for nice indenting after line breaks (bound to <C-J>)
-
-" helper, returns string with n spaces
-func! SpStr( n )
-  let i = 0
-  let res = ""
-  while (i < a:n)
-    let res = res . " "
-    let i = i + 1
-  endwhile
-  return res
-endfunc
-
-" reindents current line and puts next line
-" (outdated with vim 6.0's nice indent functionality)
-func! GAPnl()
-  let nc = line(".")
-  let cl = getline(nc)
-  let nsp = matchend(cl, "^[ ]*")
-  let m =  match(cl, "^[ ]*\\(if\\|while\\|for\\) ")
-  let m1 =  match(cl, ".*[^a-zA-Z0-9_]function[ ]*(.*)[ ]*$")
-  if (m != -1 || m1 != -1)
-    call append(nc, SpStr(nsp + 2))
-    return
-  endif
-  let m = match(cl, "^  [ ]*\\(fi\\|end\\|od\\)\\([);,]\\)")
-  if (m != -1)
-    let cl = substitute(cl, "^  ", "", "")
-    call setline(nc, cl)
-    call append(nc, SpStr(nsp -  2))
-    return
-  endif
-  let m = match(cl, "^  [ ]*\\(else\\|elif\\)")
-  if (m != -1)
-    let cl = substitute(cl, "^  ", "", "")
-    call setline(nc, cl)
-    call append(nc, SpStr(nsp))
-    return
-  endif
-  call append(nc, SpStr(nsp)) 
-endfunc
-
-" call GAPnl, goto end of next line and in append mode
-map! <C-J> <ESC>:call GAPnl()<CR>j$a
 
 " position count from 0 here
 " (we assume that pos is after the begin delimiter b to match)
