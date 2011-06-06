@@ -1,0 +1,12 @@
+There are some functions/macros for 
+
+* ToggleCommentGAP     -- toggle comment, add or remove "##  " (mapped on F12)
+* <F4>                 -- macro to add word under cursor to `local' list
+* GAPlocal             -- add whole `local' declaration to current function (mapped on <F5>)
+
+Then the completion mechanism <CTRL>-p is extended to complete all GAP variable names. For word completion, fall back to list of GAP global variable names: after loading your favourite packages in GAP say 
+
+    for w in NamesGVars() do AppendTo("~/.vim/GAPWORDS",w,"\n"); od;
+
+For vim version >= 6.0 folding is switched on and indentation switched on.
+
