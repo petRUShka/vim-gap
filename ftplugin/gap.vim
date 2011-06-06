@@ -1,3 +1,26 @@
+" Comments: If you want to use this file, you may want to adjust colors to
+" your taste. There are some functions/macros for 
+" ToggleCommentGAP     -- toggle comment, add or remove "##  " 
+"                         (mapped on F12)
+" <F4>                 -- macro to add word under cursor to `local' list
+" GAPlocal             -- add whole `local' declaration to current function
+"                         (mapped on <F5>)
+" Then the completion mechanism <CTRL>-p is extended to complete all
+" GAP variable names - search `GAPWORDS' below, how to do this.
+"
+" For vim version >= 6.0 folding is switched on.
+" 
+" For vim version >= 6.0 there is another file gap_indent.vim which you 
+" may want to copy into ~/.vim/indent/gap.vim -- this provides a nice
+" automatic indenting while writing GAP code.
+"
+" Please, send comments and suggestions to:  Frank.Luebeck@Math.RWTH-Aachen.De
+
+" Only do this when not done yet for this buffer
+if exists("b:did_ftplugin")
+  finish
+endif
+
 " some macros for editing GAP files (adjust as you like)
 " This adds word under cursor to local variables list.
 map <F4> miviwy?\<local\><CR>/;<CR>i, <ESC>p`i
@@ -195,7 +218,5 @@ if version>=600
   set foldmethod=expr
   set foldminlines=3
   set foldexpr=GAPFoldLevel(v:lnum)
-  " load the indent file
-  " runtime indent/gap.vim
 endif
 

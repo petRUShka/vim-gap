@@ -5,24 +5,6 @@
 " Last change:	June 2001 
 " CVS version:  $Id: gap.vim,v 1.7 2001/10/31 08:40:19 gap Exp $
 " 
-" Comments: If you want to use this file, you may want to adjust colors to
-" your taste. There are some functions/macros for 
-" ToggleCommentGAP     -- toggle comment, add or remove "##  " 
-"                         (mapped on F12)
-" <F4>                 -- macro to add word under cursor to `local' list
-" GAPlocal             -- add whole `local' declaration to current function
-"                         (mapped on <F5>)
-" Then the completion mechanism <CTRL>-p is extended to complete all
-" GAP variable names - search `GAPWORDS' below, how to do this.
-"
-" For vim version >= 6.0 folding is switched on.
-" 
-" For vim version >= 6.0 there is another file gap_indent.vim which you 
-" may want to copy into ~/.vim/indent/gap.vim -- this provides a nice
-" automatic indenting while writing GAP code.
-"
-
-" Please, send comments and suggestions to:  Frank.Luebeck@Math.RWTH-Aachen.De
 
 " Remove any old syntax stuff hanging around
 syn clear
@@ -72,30 +54,6 @@ syn match  gapNumber		"-\=\<\d\+\>\/"
 syn match  gapListDelimiter	"[][]"
 syn match  gapParentheses	"[)(]"
 syn match  gapSublist	"[}{]"
-
-"hilite
-" this is very much dependent on personal taste, must add gui case if you
-" use gvim
-"hi gapString ctermfg=2
-"hi gapFunction  ctermfg=1
-"hi gapDeclare  cterm=bold ctermfg=4
-"hi gapMethsel  ctermfg=6
-"hi gapOtherKey  ctermfg=3
-"hi gapOperator cterm=bold ctermfg=8
-"hi gapConditional cterm=bold ctermfg=9
-"hi gapRepeat cterm=bold ctermfg=12
-"hi gapComment  ctermfg=4
-"hi gapTodo  ctermbg=2 ctermfg=0
-"hi link gapTTodoComment  gapTodo
-"hi link gapTodoComment	gapComment
-"hi gapNumber ctermfg=5
-"hi gapBool ctermfg=5
-"hi gapChar ctermfg=3
-"hi gapListDelimiter ctermfg=8
-"hi gapParentheses ctermfg=12
-"hi gapSublist ctermfg=14
-"hi gapFunLine ctermbg=3 ctermfg=0
-"hi Folded ctermbg=6 ctermfg=0
 
 hi def link gapString         String
 hi def link gapFunction       Function 
