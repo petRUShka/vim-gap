@@ -1,4 +1,17 @@
-There are some functions/macros for 
+== SYNOPSIS:
+
+Vim-gap is a vim plugin for GAP support. Vim-gap support syntax highlighting, indentation, completion, folding and syntax checker for GAP in Vim editor.
+
+== Installation
+
+I recommend to use Pathogen (http://www.vim.org/scripts/script.php?script_id=2332) to organized Vim plugins. In this case you should do following:
+
+  cd ~/.vim/bundle    
+  git clone git://github.com/petRUShka/vim-gap.git                   
+
+If you want to enable gap syntax checker then you should install Syntastic plugin (https://github.com/scrooloose/syntastic). Installation of this plugin is the same.
+
+== Some functions and macros 
 
 * ToggleCommentGAP     -- toggle comment, add or remove "##  " (mapped on F12)
 * <F4>                 -- macro to add word under cursor to `local' list
@@ -6,7 +19,7 @@ There are some functions/macros for
 
 Then the completion mechanism <CTRL>-p is extended to complete all GAP variable names. For word completion, fall back to list of GAP global variable names: after loading your favourite packages in GAP say 
 
-    for w in NamesGVars() do AppendTo("~/.vim/GAPWORDS",w,"\n"); od;
+  for w in NamesGVars() do AppendTo("~/.vim/GAPWORDS",w,"\n"); od;
 
 For vim version >= 6.0 folding is switched on and indentation switched on.
 
