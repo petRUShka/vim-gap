@@ -1,10 +1,10 @@
 == SYNOPSIS:
 
-Vim-gap is a vim plugin for GAP support. Vim-gap support syntax highlighting, indentation, completion, folding and syntax checker for GAP in Vim editor.
+Vim-gap is a vim plugin for GAP support. Vim-gap supports syntax highlighting, indentation, completion, folding and syntax checker for GAP in Vim editor.
 
 == Installation
 
-I recommend to use Pathogen (http://www.vim.org/scripts/script.php?script_id=2332) to organized Vim plugins. In this case you should do following:
+I recommend to use Pathogen (http://www.vim.org/scripts/script.php?script_id=2332) to organize Vim plugins. In this case you should do following:
 
   cd ~/.vim/bundle    
   git clone git://github.com/petRUShka/vim-gap.git                   
