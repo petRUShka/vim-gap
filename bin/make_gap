@@ -1,0 +1,2 @@
+#!/bin/sh
+echo "Read(\"$1\"); quit;" | gap -b -q -T
