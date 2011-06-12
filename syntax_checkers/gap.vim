@@ -10,7 +10,7 @@ if exists("loaded_gap_syntax_checker")
 endif
 let loaded_gap_syntax_checker = 1
 
-"bail if the user doesnt have ruby installed
+"fail if the user doesn't have gap installed
 if !executable("gap")
     finish
 endif
